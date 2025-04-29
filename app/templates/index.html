@@ -10,5 +10,37 @@
       <li>{{ table }}</li>
     {% endfor %}
   </ul>
+
+  <h2>Run SQL Query</h2>
+  <form method="POST">
+    <textarea name="query" rows="5" cols="60" placeholder="Enter your SQL query here..."></textarea><br>
+    <button type="submit">Run Query</button>
+  </form>
+
+  {% if error %}
+    <h3 style="color:red;">Error: {{ error }}</h3>
+  {% endif %}
+
+  {% if query_result %}
+    <h3>Query Results:</h3>
+    <table border="1">
+      <thead>
+        <tr>
+          {% for column in query_result[0].keys() %}
+            <th>{{ column }}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in query_result %}
+          <tr>
+            {% for cell in row %}
+              <td>{{ cell }}</td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
 </body>
 </html>
