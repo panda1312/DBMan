@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SQL Manager</title>
+</head>
+<body>
+  <h1>Database Tables</h1>
+  <ul>
+    {% for table in tables %}
+      <li>{{ table }}</li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
